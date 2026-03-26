@@ -1,4 +1,4 @@
-# geoblock-lists
+# ipmap
 
 Daily-updated IP CIDR blocklists, built from authoritative RIR data (APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC).  
 A GitHub Action fetches the upstream `delegated-extended-latest` files every day at 04:00 UTC and commits fresh lists to `lists/`.
