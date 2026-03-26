@@ -21,7 +21,16 @@ import os
 from datetime import datetime, timezone
 from collections import defaultdict
 
-# ── RIR sources ──────────────────────────────────────────────────────────────
+# ── Paths: work from repo root regardless of where the script lives ───────────
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# If script is in scripts/, go up one level; if in root, stay
+REPO_ROOT  = (os.path.dirname(SCRIPT_DIR)
+              if os.path.basename(SCRIPT_DIR) == "scripts"
+              else SCRIPT_DIR)
+OUTPUT_DIR = os.path.join(REPO_ROOT, "lists", "block")
+
+# ── RIR sources ───────────────────────────────────────────────────────────────
 
 RIR_URLS = [
     "https://ftp.apnic.net/stats/apnic/delegated-apnic-extended-latest",
@@ -34,19 +43,14 @@ RIR_URLS = [
 # ── Group definitions ─────────────────────────────────────────────────────────
 
 GROUPS = {
-    # Political / state-actor groups
     "CCP":        ["CN", "HK", "MO"],
     "Russian":    ["RU", "BY", "KZ", "AM", "KG", "TJ", "MD"],
     "Iran":       ["IR", "LB", "YE", "IQ"],
     "AxisOfEvil": ["CN", "HK", "MO", "RU", "BY", "KZ", "AM", "KG", "TJ", "MD",
                    "IR", "LB", "YE", "IQ", "KP"],
-
-    # Cybercrime tiers
     "HackerTier1": ["NG", "RO", "BR", "UA"],
     "HackerTier2": ["IN", "ID", "VN", "PK", "BD"],
     "HackerTier3": ["TR", "MA", "DZ", "MX"],
-
-    # Asian scam farm operations
     "AsianScams":  ["MM", "KH", "LA", "PH"],
 }
 
@@ -60,10 +64,6 @@ GROUP_DESCRIPTIONS = {
     "HackerTier3": "Moderate cybercrime sources",
     "AsianScams":  "Southeast Asian scam farm operations",
 }
-
-BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_DIR = os.path.join(BASE_DIR, "lists", "block")
-
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -111,8 +111,7 @@ def parse_rir(lines: list[str]) -> dict[str, dict[str, list[str]]]:
 
         try:
             if rtype == "ipv4":
-                cidrs = ipv4_range_to_cidrs(start, int(value))
-                result[cc]["v4"].extend(cidrs)
+                result[cc]["v4"].extend(ipv4_range_to_cidrs(start, int(value)))
             elif rtype == "ipv6":
                 cidr = f"{start}/{int(value)}"
                 ipaddress.IPv6Network(cidr, strict=False)
@@ -192,12 +191,9 @@ def write_group(name: str, countries: list[str],
     write_file(os.path.join(OUTPUT_DIR, f"{name}_v6.txt"),
                name, "v6", "IPv6", sorted_v6, countries, counts_v6)
 
-    print(f"  → {name}_v4.txt ({len(sorted_v4)} CIDRs)  "
-          f"/ {name}_v6.txt ({len(sorted_v6)} CIDRs)")
+    print(f"  → {name}_v4.txt ({len(sorted_v4)} CIDRs) / {name}_v6.txt ({len(sorted_v6)} CIDRs)")
     return len(sorted_v4), len(sorted_v6)
 
-
-# ── Manifest ──────────────────────────────────────────────────────────────────
 
 def write_manifest(group_stats: dict[str, tuple[int, int]]) -> None:
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -221,17 +217,18 @@ def write_manifest(group_stats: dict[str, tuple[int, int]]) -> None:
         "",
         "> Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest",
     ]
-    manifest_path = os.path.join(OUTPUT_DIR, "README.md")
-    with open(manifest_path, "w") as f:
+    with open(os.path.join(OUTPUT_DIR, "README.md"), "w") as f:
         f.write("\n".join(lines) + "\n")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    print(f"Repo root : {REPO_ROOT}")
+    print(f"Output dir: {OUTPUT_DIR}")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    print("=== Fetching RIR delegated-extended files ===")
+    print("\n=== Fetching RIR delegated-extended files ===")
     all_lines: list[str] = []
     for url in RIR_URLS:
         all_lines.extend(fetch_rir(url))
@@ -246,7 +243,7 @@ def main() -> None:
         group_stats[group_name] = write_group(group_name, countries, country_map)
 
     write_manifest(group_stats)
-    print(f"\n✓ Done. Files written to: {os.path.abspath(OUTPUT_DIR)}")
+    print(f"\n✓ Done. Files written to: {OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

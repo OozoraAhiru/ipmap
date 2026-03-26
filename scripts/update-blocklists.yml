@@ -2,9 +2,12 @@ name: Update Blocklists
 
 on:
   schedule:
-    # Run daily at 04:00 UTC (after all 5 RIRs have published their daily files)
+    # Run daily at 04:00 UTC
     - cron: "0 4 * * *"
-  workflow_dispatch:  # allow manual trigger
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: write
@@ -24,7 +27,15 @@ jobs:
           python-version: "3.12"
 
       - name: Generate blocklist files
-        run: python scripts/generate.py
+        run: |
+          # Support both layouts: script in root or in scripts/
+          if [ -f "scripts/generate.py" ]; then
+            python scripts/generate.py
+          elif [ -f "generate.py" ]; then
+            python generate.py
+          else
+            echo "ERROR: generate.py not found in root or scripts/" && exit 1
+          fi
 
       - name: Check for changes
         id: diff
