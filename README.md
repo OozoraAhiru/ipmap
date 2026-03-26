@@ -1,63 +1,88 @@
-# geoblock-lists
+# ipmap
 
 Daily-updated IP CIDR blocklists, built from authoritative RIR data (APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC).  
-A GitHub Action fetches the upstream `delegated-extended-latest` files every day at 04:00 UTC and commits fresh lists to `lists/`.
+A GitHub Action fetches the upstream `delegated-extended-latest` files every day at 04:00 UTC and commits fresh lists to `lists/block/`.
+
+IPv4 and IPv6 are split into separate files for easy router integration.
 
 ---
 
 ## Files
 
-| File | Countries | Description |
-|------|-----------|-------------|
-| `CCP.txt` | CN, HK, MO | Chinese Communist Party direct control |
-| `Russian.txt` | RU, BY, KZ, AM, KG, TJ, MD | Russian sphere of influence (CSTO + Belarus) |
-| `Iran.txt` | IR, LB, YE, IQ | Iranian axis of resistance proxy states |
-| `AxisOfEvil.txt` | all of the above + KP | All state-actor threats combined |
-| `HackerTier1.txt` | NG, RO, BR, UA | High-confidence cybercrime sources |
-| `HackerTier2.txt` | IN, ID, VN, PK, BD | Significant cybercrime sources |
-| `HackerTier3.txt` | TR, MA, DZ, MX | Moderate cybercrime sources |
-| `AsianScams.txt` | MM, KH, LA, PH | Southeast Asian scam farm operations |
+| Files | Countries / Regions | Description |
+|-------|---------------------|-------------|
+| `CCP_v4.txt` / `CCP_v6.txt` | CN, HK, MO | Chinese Communist Party direct control |
+| `Russian_v4.txt` / `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | Russian sphere of influence (CSTO + Belarus) |
+| `Iran_v4.txt` / `Iran_v6.txt` | IR, LB, YE, IQ | Iranian axis of resistance proxy states |
+| `AxisOfEvil_v4.txt` / `AxisOfEvil_v6.txt` | all of the above + KP | All state-actor threats combined |
+| `HackerTier1_v4.txt` / `HackerTier1_v6.txt` | NG, RO, BR, UA | High-confidence cybercrime sources |
+| `HackerTier2_v4.txt` / `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | Significant cybercrime sources |
+| `HackerTier3_v4.txt` / `HackerTier3_v6.txt` | TR, MA, DZ, MX | Moderate cybercrime sources |
+| `AsianScams_v4.txt` / `AsianScams_v6.txt` | MM, KH, LA, PH | Southeast Asian scam farm operations |
 
 ---
 
-## Raw URLs (for routers / scripts)
+## Raw URLs
 
-Replace `main` with your branch name if different.
-
+### IPv4
 ```
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/CCP.txt
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/Russian.txt
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/Iran.txt
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/AxisOfEvil.txt
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/HackerTier1.txt
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/HackerTier2.txt
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/HackerTier3.txt
-https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/AsianScams.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/CCP_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Russian_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Iran_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier1_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier2_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier3_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AsianScams_v4.txt
+```
+
+### IPv6
+```
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/CCP_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Russian_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Iran_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier1_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier2_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier3_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AsianScams_v6.txt
 ```
 
 ---
 
 ## Router usage examples
 
-### OpenWrt / nftables
+### OpenWrt / nftables (recommended)
 ```sh
-# Download a list and add to an nftables set
-curl -sL "https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/AxisOfEvil.txt" \
+# Block IPv4
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v4.txt" \
+  | grep -v '^#' \
+  | xargs -I{} nft add element inet fw4 block_src { {} }
+
+# Block IPv6
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v6.txt" \
   | grep -v '^#' \
   | xargs -I{} nft add element inet fw4 block_src { {} }
 ```
 
 ### OpenWrt / ipset (iptables)
 ```sh
-ipset create AXIS_OF_EVIL hash:net
-curl -sL "https://raw.githubusercontent.com/YOUR_USERNAME/geoblock-lists/main/lists/AxisOfEvil.txt" \
-  | grep -v '^#' \
-  | while read cidr; do ipset add AXIS_OF_EVIL "$cidr"; done
-iptables -I INPUT -m set --match-set AXIS_OF_EVIL src -j DROP
+ipset create AXIS_OF_EVIL_V4 hash:net family inet
+ipset create AXIS_OF_EVIL_V6 hash:net family inet6
+
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v4.txt" \
+  | grep -v '^#' | while read cidr; do ipset add AXIS_OF_EVIL_V4 "$cidr"; done
+
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v6.txt" \
+  | grep -v '^#' | while read cidr; do ipset add AXIS_OF_EVIL_V6 "$cidr"; done
+
+iptables  -I INPUT -m set --match-set AXIS_OF_EVIL_V4 src -j DROP
+ip6tables -I INPUT -m set --match-set AXIS_OF_EVIL_V6 src -j DROP
 ```
 
 ### DD-WRT / Tomato
-Load via a startup script using the same `ipset` method above.
+Load via startup script using the same `ipset` method above.  
+Note: DD-WRT does not support IPv6 ipsets by default; use only the `_v4` files if needed.
 
 ---
 
@@ -87,7 +112,8 @@ Requires Python 3.9+, no external dependencies.
 
 ## Notes
 
-- Lists include **both IPv4 and IPv6** prefixes.
-- `AxisOfEvil.txt` is the union of CCP + Russian + Iran + KP — deduplicated.
-- Lines starting with `#` are comments and safe to ignore in any parser.
+- IPv4 and IPv6 are in separate files (`_v4.txt` / `_v6.txt`) for compatibility with routers that handle them differently.
+- `AxisOfEvil_v*.txt` is the deduplicated union of CCP + Russian + Iran + KP.
+- Lines starting with `#` are comments — filter with `grep -v '^#'` before loading into ipset/nftables.
 - The Action only commits when files actually change (diff check before commit).
+- `lists/block/README.md` is auto-generated on each run with live entry counts.
