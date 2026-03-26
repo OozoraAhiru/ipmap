@@ -10,14 +10,17 @@ Sources (all five RIRs, IPv4 + IPv6):
   AFRINIC https://ftp.afrinic.net/stats/afrinic/delegated-afrinic-extended-latest
 
 Output per group (e.g. CCP):
-  lists/block/CCP_v4.txt   — IPv4 only
-  lists/block/CCP_v6.txt   — IPv6 only
+  list/CCP_v4.txt   — IPv4 only
+  list/CCP_v6.txt   — IPv6 only
 """
 
 import ipaddress
-import urllib.request
 import urllib.error
+import urllib.request
 import os
+import shutil
+import subprocess
+import sys
 from datetime import datetime, timezone
 from collections import defaultdict
 
@@ -28,7 +31,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT  = (os.path.dirname(SCRIPT_DIR)
               if os.path.basename(SCRIPT_DIR) == "scripts"
               else SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(REPO_ROOT, "lists", "block")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "list")
 
 # ── RIR sources ───────────────────────────────────────────────────────────────
 
@@ -84,7 +87,26 @@ def fetch_rir(url: str) -> list[str]:
         print(f"OK ({len(data)} lines)")
         return data
     except urllib.error.URLError as e:
-        print(f"FAILED ({e})")
+        print(f"urllib failed ({e}); trying curl ...", end=" ", flush=True)
+
+    curl_bin = shutil.which("curl")
+    if not curl_bin:
+        print("FAILED (curl not found)")
+        return []
+
+    try:
+        proc = subprocess.run(
+            [curl_bin, "-fsSL", "--connect-timeout", "30", "--max-time", "180", url],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        data = proc.stdout.splitlines()
+        print(f"OK ({len(data)} lines)")
+        return data
+    except subprocess.CalledProcessError as e:
+        detail = e.stderr.strip() or f"exit status {e.returncode}"
+        print(f"FAILED ({detail})")
         return []
 
 
@@ -232,6 +254,11 @@ def main() -> None:
     all_lines: list[str] = []
     for url in RIR_URLS:
         all_lines.extend(fetch_rir(url))
+
+    if not all_lines:
+        print("\nERROR: failed to fetch delegated stats from every RIR source.")
+        print("Refusing to overwrite blocklists with empty output.")
+        sys.exit(1)
 
     print(f"\n=== Parsing {len(all_lines)} total lines ===")
     country_map = parse_rir(all_lines)

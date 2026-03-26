@@ -1,7 +1,7 @@
 # ipmap
 
 Daily-updated IP CIDR blocklists, built from authoritative RIR data (APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC).  
-A GitHub Action fetches the upstream `delegated-extended-latest` files every day at 04:00 UTC and commits fresh lists to `lists/block/`.
+A GitHub Action fetches the upstream `delegated-extended-latest` files every day at 04:00 UTC and commits fresh lists to `list/`.
 
 IPv4 and IPv6 are split into separate files for easy router integration.
 
@@ -26,26 +26,26 @@ IPv4 and IPv6 are split into separate files for easy router integration.
 
 ### IPv4
 ```
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/CCP_v4.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Russian_v4.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Iran_v4.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v4.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier1_v4.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier2_v4.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier3_v4.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AsianScams_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/CCP_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/Russian_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/Iran_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AxisOfEvil_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/HackerTier1_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/HackerTier2_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/HackerTier3_v4.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AsianScams_v4.txt
 ```
 
 ### IPv6
 ```
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/CCP_v6.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Russian_v6.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/Iran_v6.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v6.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier1_v6.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier2_v6.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/HackerTier3_v6.txt
-https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AsianScams_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/CCP_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/Russian_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/Iran_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AxisOfEvil_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/HackerTier1_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/HackerTier2_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/HackerTier3_v6.txt
+https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AsianScams_v6.txt
 ```
 
 ---
@@ -55,12 +55,12 @@ https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AsianScams_
 ### OpenWrt / nftables (recommended)
 ```sh
 # Block IPv4
-curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v4.txt" \
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AxisOfEvil_v4.txt" \
   | grep -v '^#' \
   | xargs -I{} nft add element inet fw4 block_src { {} }
 
 # Block IPv6
-curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v6.txt" \
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AxisOfEvil_v6.txt" \
   | grep -v '^#' \
   | xargs -I{} nft add element inet fw4 block_src { {} }
 ```
@@ -70,10 +70,10 @@ curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/A
 ipset create AXIS_OF_EVIL_V4 hash:net family inet
 ipset create AXIS_OF_EVIL_V6 hash:net family inet6
 
-curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v4.txt" \
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AxisOfEvil_v4.txt" \
   | grep -v '^#' | while read cidr; do ipset add AXIS_OF_EVIL_V4 "$cidr"; done
 
-curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/lists/block/AxisOfEvil_v6.txt" \
+curl -sL "https://raw.githubusercontent.com/OozoraAhiru/ipmap/main/list/AxisOfEvil_v6.txt" \
   | grep -v '^#' | while read cidr; do ipset add AXIS_OF_EVIL_V6 "$cidr"; done
 
 iptables  -I INPUT -m set --match-set AXIS_OF_EVIL_V4 src -j DROP
@@ -116,4 +116,4 @@ Requires Python 3.9+, no external dependencies.
 - `AxisOfEvil_v*.txt` is the deduplicated union of CCP + Russian + Iran + KP.
 - Lines starting with `#` are comments — filter with `grep -v '^#'` before loading into ipset/nftables.
 - The Action only commits when files actually change (diff check before commit).
-- `lists/block/README.md` is auto-generated on each run with live entry counts.
+- `list/README.md` is auto-generated on each run with live entry counts.

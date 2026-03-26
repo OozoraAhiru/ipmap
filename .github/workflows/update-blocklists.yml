@@ -26,17 +26,24 @@ jobs:
       - name: Generate blocklist files
         run: python scripts/generate.py
 
+      - name: Show generated files
+        run: |
+          find list -maxdepth 2 -type f | sort
+          git status --porcelain
+
       - name: Check for changes
         id: diff
         run: |
-          git diff --quiet lists/ || echo "changed=true" >> "$GITHUB_OUTPUT"
+          if [ -n "$(git status --porcelain list/)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Commit and push updated lists
         if: steps.diff.outputs.changed == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add lists/
+          git add list/
           TODAY=$(date -u +"%Y-%m-%d")
           git commit -m "chore: update blocklists ${TODAY}"
           git push
