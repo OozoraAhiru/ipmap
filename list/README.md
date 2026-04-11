@@ -1,16 +1,16 @@
 # Blocklist Files
 
-**Last updated:** 2026-04-10 05:57 UTC
+**Last updated:** 2026-04-11 05:24 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
-| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12151 | 3000 | Chinese Communist Party direct control |
-| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 12841 | 2645 | Russian sphere of influence (CSTO + Belarus) |
+| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12149 | 2999 | Chinese Communist Party direct control |
+| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 12842 | 2645 | Russian sphere of influence (CSTO + Belarus) |
 | `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2539 | 808 | Iranian axis of resistance proxy states |
-| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27532 | 6453 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
-| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 18978 | 9961 | High-confidence cybercrime sources |
-| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 19954 | 8388 | Significant cybercrime sources |
+| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27531 | 6452 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
+| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 18979 | 9963 | High-confidence cybercrime sources |
+| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 19962 | 8394 | Significant cybercrime sources |
 | `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3456 | 1264 | Moderate cybercrime sources |
-| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1462 | 612 | Southeast Asian scam farm operations |
+| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1463 | 613 | Southeast Asian scam farm operations |
 
 > Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest
