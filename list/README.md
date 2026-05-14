@@ -1,16 +1,16 @@
 # Blocklist Files
 
-**Last updated:** 2026-05-13 06:46 UTC
+**Last updated:** 2026-05-14 06:45 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
-| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12164 | 3002 | Chinese Communist Party direct control |
-| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 12897 | 2645 | Russian sphere of influence (CSTO + Belarus) |
+| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12197 | 3002 | Chinese Communist Party direct control |
+| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 12901 | 2647 | Russian sphere of influence (CSTO + Belarus) |
 | `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2543 | 807 | Iranian axis of resistance proxy states |
-| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27605 | 6454 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
-| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19009 | 9939 | High-confidence cybercrime sources |
-| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20029 | 8449 | Significant cybercrime sources |
-| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3485 | 1273 | Moderate cybercrime sources |
+| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27642 | 6456 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
+| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19006 | 9937 | High-confidence cybercrime sources |
+| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20035 | 8451 | Significant cybercrime sources |
+| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3487 | 1273 | Moderate cybercrime sources |
 | `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1471 | 623 | Southeast Asian scam farm operations |
 
 > Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest
