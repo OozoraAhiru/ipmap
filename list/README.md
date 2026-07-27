@@ -1,6 +1,6 @@
 # Blocklist Files
 
-**Last updated:** 2026-07-26 06:35 UTC
+**Last updated:** 2026-07-27 07:28 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
