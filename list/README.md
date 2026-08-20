@@ -1,16 +1,16 @@
 # Blocklist Files
 
-**Last updated:** 2026-08-19 04:34 UTC
+**Last updated:** 2026-08-20 04:34 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
-| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12280 | 3007 | Chinese Communist Party direct control |
-| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13032 | 2648 | Russian sphere of influence (CSTO + Belarus) |
-| `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2579 | 799 | Iranian axis of resistance proxy states |
-| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27892 | 6454 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
-| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19150 | 9973 | High-confidence cybercrime sources |
-| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20230 | 8597 | Significant cybercrime sources |
-| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3519 | 1299 | Moderate cybercrime sources |
-| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1489 | 636 | Southeast Asian scam farm operations |
+| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12280 | 3008 | Chinese Communist Party direct control |
+| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13045 | 2649 | Russian sphere of influence (CSTO + Belarus) |
+| `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2580 | 799 | Iranian axis of resistance proxy states |
+| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27906 | 6456 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
+| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19154 | 9963 | High-confidence cybercrime sources |
+| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20236 | 8600 | Significant cybercrime sources |
+| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3519 | 1300 | Moderate cybercrime sources |
+| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1490 | 637 | Southeast Asian scam farm operations |
 
 > Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest
