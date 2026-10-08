@@ -1,16 +1,16 @@
 # Blocklist Files
 
-**Last updated:** 2026-10-07 10:51 UTC
+**Last updated:** 2026-10-08 11:08 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
-| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12291 | 3015 | Chinese Communist Party direct control |
-| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13084 | 2639 | Russian sphere of influence (CSTO + Belarus) |
+| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12290 | 3015 | Chinese Communist Party direct control |
+| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13085 | 2639 | Russian sphere of influence (CSTO + Belarus) |
 | `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2598 | 807 | Iranian axis of resistance proxy states |
 | `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27974 | 6461 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
-| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19260 | 9989 | High-confidence cybercrime sources |
-| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20410 | 8737 | Significant cybercrime sources |
-| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3543 | 1318 | Moderate cybercrime sources |
+| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19264 | 9993 | High-confidence cybercrime sources |
+| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20416 | 8743 | Significant cybercrime sources |
+| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3545 | 1319 | Moderate cybercrime sources |
 | `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1495 | 643 | Southeast Asian scam farm operations |
 
 > Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest
