@@ -1,16 +1,16 @@
 # Blocklist Files
 
-**Last updated:** 2026-10-19 09:35 UTC
+**Last updated:** 2026-10-20 09:07 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
-| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12289 | 3020 | Chinese Communist Party direct control |
-| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13104 | 2639 | Russian sphere of influence (CSTO + Belarus) |
+| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12288 | 3021 | Chinese Communist Party direct control |
+| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13108 | 2639 | Russian sphere of influence (CSTO + Belarus) |
 | `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2599 | 810 | Iranian axis of resistance proxy states |
-| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27993 | 6469 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
-| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19283 | 10002 | High-confidence cybercrime sources |
-| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20444 | 8763 | Significant cybercrime sources |
+| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 27996 | 6470 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
+| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19281 | 10002 | High-confidence cybercrime sources |
+| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20450 | 8767 | Significant cybercrime sources |
 | `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3547 | 1322 | Moderate cybercrime sources |
-| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1498 | 646 | Southeast Asian scam farm operations |
+| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1500 | 646 | Southeast Asian scam farm operations |
 
 > Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest
