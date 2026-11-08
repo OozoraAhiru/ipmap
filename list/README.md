@@ -1,6 +1,6 @@
 # Blocklist Files
 
-**Last updated:** 2026-11-07 10:52 UTC
+**Last updated:** 2026-11-08 11:02 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
@@ -11,6 +11,6 @@
 | `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19302 | 10007 | High-confidence cybercrime sources |
 | `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20511 | 8811 | Significant cybercrime sources |
 | `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3563 | 1328 | Moderate cybercrime sources |
-| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1497 | 645 | Southeast Asian scam farm operations |
+| `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1497 | 646 | Southeast Asian scam farm operations |
 
 > Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest
