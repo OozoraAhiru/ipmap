@@ -1,6 +1,6 @@
 # Blocklist Files
 
-**Last updated:** 2026-11-21 12:06 UTC
+**Last updated:** 2026-11-22 12:17 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
@@ -9,7 +9,7 @@
 | `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2604 | 813 | Iranian axis of resistance proxy states |
 | `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 28053 | 6479 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
 | `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 19309 | 10012 | High-confidence cybercrime sources |
-| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20581 | 8847 | Significant cybercrime sources |
+| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20581 | 8849 | Significant cybercrime sources |
 | `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3569 | 1330 | Moderate cybercrime sources |
 | `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1506 | 654 | Southeast Asian scam farm operations |
 
