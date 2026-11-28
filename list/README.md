@@ -1,16 +1,16 @@
 # Blocklist Files
 
-**Last updated:** 2026-11-27 13:30 UTC
+**Last updated:** 2026-11-28 12:43 UTC
 
 | Files | Countries / Regions | IPv4 | IPv6 | Description |
 |-------|---------------------|:----:|:----:|-------------|
-| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12289 | 3028 | Chinese Communist Party direct control |
-| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13160 | 2639 | Russian sphere of influence (CSTO + Belarus) |
-| `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2605 | 812 | Iranian axis of resistance proxy states |
-| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 28055 | 6479 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
-| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 18900 | 9880 | High-confidence cybercrime sources |
-| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20595 | 8860 | Significant cybercrime sources |
-| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3458 | 1291 | Moderate cybercrime sources |
+| `CCP_v4.txt` `CCP_v6.txt` | CN, HK, MO | 12290 | 3029 | Chinese Communist Party direct control |
+| `Russian_v4.txt` `Russian_v6.txt` | RU, BY, KZ, AM, KG, TJ, MD | 13161 | 2639 | Russian sphere of influence (CSTO + Belarus) |
+| `Iran_v4.txt` `Iran_v6.txt` | IR, LB, YE, IQ | 2605 | 815 | Iranian axis of resistance proxy states |
+| `AxisOfEvil_v4.txt` `AxisOfEvil_v6.txt` | CN, HK, MO, RU, BY, KZ, AM, KG, TJ, MD, IR, LB, YE, IQ, KP | 28057 | 6483 | All state-actor threats combined (CCP + Russia + Iran + DPRK) |
+| `HackerTier1_v4.txt` `HackerTier1_v6.txt` | NG, RO, BR, UA | 18902 | 9880 | High-confidence cybercrime sources |
+| `HackerTier2_v4.txt` `HackerTier2_v6.txt` | IN, ID, VN, PK, BD | 20603 | 8865 | Significant cybercrime sources |
+| `HackerTier3_v4.txt` `HackerTier3_v6.txt` | TR, MA, DZ, MX | 3460 | 1294 | Moderate cybercrime sources |
 | `AsianScams_v4.txt` `AsianScams_v6.txt` | MM, KH, LA, PH | 1504 | 651 | Southeast Asian scam farm operations |
 
 > Source: APNIC / ARIN / LACNIC / RIPE NCC / AFRINIC delegated-extended-latest
